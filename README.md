@@ -50,3 +50,20 @@ This will run Prettify first and then run ESLint, Jest and Parcel in parralel.
 } -> Parcel
 ```
 This will run Jest in the same time as the Prettify+ESLint, and then only run the bundler once unit tests AND format/lint successfully complete.
+
+
+**Full example of a `symph.config` file:**
+```
+OnWatch:
+  Parcel -> HMR,
+  Jest,
+  {
+    Prettify -> ESLint
+  }  
+  
+BeforeCommit:
+  Jest,
+  ESLint
+```
+
+Note: In the future Symph can have a GUI that shows a diagram of these build proccesses in a diagram generated side-by-side as you edit your config file.
